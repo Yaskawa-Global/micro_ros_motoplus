@@ -78,7 +78,7 @@ repositories:
     type: git
     url: https://github.com/yaskawa-global/rcutils.git
     # 'upstream/humble' (couple commits past 5.1.3), with 5 patches
-    version: c8ec6220ae77d3363de4c377485fd9c653be2936
+    version: atomics_test
   uros/micro_ros_utilities:
     type: git
     url: https://github.com/micro-ROS/micro_ros_utilities.git
