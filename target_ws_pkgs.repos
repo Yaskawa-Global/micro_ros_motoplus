@@ -85,8 +85,8 @@ repositories:
     version: 3.0.1
   uros/rmw-microxrcedds:
     type: git
-    url: https://github.com/micro-ROS/rmw-microxrcedds.git
-    version: 3.0.2
+    url: https://github.com/gavanderhoorn/rmw-microxrcedds.git
+    version: le_temp_test
   uros/rosidl_typesupport:
     type: git
     url: https://github.com/yaskawa-global/rosidl_typesupport.git
