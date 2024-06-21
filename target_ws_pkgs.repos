@@ -39,7 +39,7 @@ repositories:
     url: https://github.com/ros2/rclc.git
     # NOTE: see the release notes: https://github.com/ros2/rclc/releases/tag/5.0.1
     # especially the PRs touching rosout logging init
-    # NOTE 2: this is two commit past '5.0.1', fixing the clash with 'NONE'.
+    # NOTE 2: this is two commits past '5.0.1', fixing the clash with 'NONE'.
     # See: https://github.com/ros2/rclc/issues/378
     version: 24ab126bb489984c2b66a72d2ce56e221dd707d1
   ros2/rcpputils:
@@ -97,8 +97,7 @@ repositories:
   uros/micro_ros_utilities:
     type: git
     url: https://github.com/micro-ROS/micro_ros_utilities.git
-    # three commits past 4.0.1
-    version: 74f7a6b08690079ecbb0262db563aa96f667277d
+    version: 4.0.2
   uros/rmw-microxrcedds:
     type: git
     url: https://github.com/micro-ROS/rmw-microxrcedds.git
@@ -122,7 +121,7 @@ repositories:
   ros2/common_interfaces:
     type: git
     url: https://github.com/ros2/common_interfaces.git
-    version: 5.0.0
+    version: 5.0.1
   ros2/rcl_interfaces:
     type: git
     url: https://github.com/ros2/rcl_interfaces.git
@@ -147,8 +146,8 @@ repositories:
   extra/ros-controls/control_msgs:
     type: git
     url: https://github.com/ros-controls/control_msgs.git
-    # technically on 'rolling', but this seems the version released into Iron ..
-    version: 5.0.0
+    # technically on 'rolling', but this is the version released into Iron ..
+    version: 5.2.0
   extra/ros2/geometry2_tf2_msgs:
     type: git
     url: https://github.com/ros2/geometry2.git
