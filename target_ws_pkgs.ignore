@@ -37,13 +37,16 @@ ros2/rmw_implementation/test_rmw_implementation
 ros2/rosidl/rosidl_generator_tests
 ros2/rosidl/rosidl_typesupport_introspection_cpp
 ros2/rosidl/rosidl_typesupport_introspection_tests
+ros2/rosidl/rosidl_generator_tests
 uros/rcl/rcl_lifecycle
 uros/rosidl_typesupport/rosidl_typesupport_tests
 uros/rosidl_typesupport_microxrcedds/test
+uros/rosidl_typesupport/rosidl_typesupport_tests
 uros/tracetools/ros2trace
 uros/tracetools/test_ros2trace
 uros/tracetools/test_tracetools
 uros/tracetools/test_tracetools_launch
+uros/tracetools/test_ros2trace
 uros/tracetools/tracetools_launch
 uros/tracetools/tracetools_read
 uros/tracetools/tracetools_test
