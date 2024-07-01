@@ -15,32 +15,32 @@ repositories:
   ros2/ament_cmake_ros:
     type: git
     url: https://github.com/ros2/ament_cmake_ros.git
-    version: 0.10.0
+    version: 0.11.2
   ament/ament_cmake:
     type: git
     # this is the only fork needed.
     # ament_cmake_core needs two patches (for now),
-    # otherwise this is vanilla upstream 1.3.5
+    # otherwise this is vanilla upstream 2.0.4
     url: https://github.com/yaskawa-global/ament_cmake.git
-    # branch: 'humble-motoplus1-candidate-20230624'
-    version: adb8bf83849c541a92ba7ea24d038757eafd2a47
+    # branch: 'iron-motoplus1-candidate-20240327'
+    version: a5960498ca28d56f9a535a4fb15830624daed5c3
   ament/ament_index:
     type: git
     url: https://github.com/ament/ament_index.git
-    version: 1.4.0
+    version: 1.5.2
   ament/ament_lint:
     type: git
     url: https://github.com/ament/ament_lint.git
-    version: 0.12.6
+    version: 0.14.3
   ament/ament_package:
     type: git
     url: https://github.com/ament/ament_package.git
-    version: 0.14.0
+    version: 0.15.3
   ament/googletest:
     type: git
     url: https://github.com/ament/googletest.git
-    version: 1.10.9004
+    version: 1.10.9005
   ament/uncrustify_vendor:
     type: git
     url: https://github.com/ament/uncrustify_vendor.git
-    version: 2.0.2
+    version: 2.1.2
