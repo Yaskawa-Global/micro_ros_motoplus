@@ -83,7 +83,7 @@ repositories:
   uros/rcl:
     type: git
     # this is a regular fork, but renamed due to potential clashes with ros2/rcl
-    url: https://github.com/Yaskawa-Global/micro_ros_rcl/tree/iron-wip-candidate-20241108
+    url: https://github.com/Yaskawa-Global/micro_ros_rcl.git
     # NOTE: the fork adds additional patches, on top of 'upstream/iron'.
     #       Branch name: 'iron-wip-candidate-20240327'
     # NOTE2: micro-ROS devs have made substantial changes to argument parsing infrastructure
