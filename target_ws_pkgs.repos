@@ -83,12 +83,12 @@ repositories:
   uros/rcl:
     type: git
     # this is a regular fork, but renamed due to potential clashes with ros2/rcl
-    url: https://github.com/jimmy-mcelwain/micro_ros_rcl.git
+    url: https://github.com/Yaskawa-Global/micro_ros_rcl/tree/iron-wip-candidate-20241108
     # NOTE: the fork adds additional patches, on top of 'upstream/iron'.
     #       Branch name: 'iron-wip-candidate-20240327'
     # NOTE2: micro-ROS devs have made substantial changes to argument parsing infrastructure
     #        and renamed compile time flags/CMake flags etc. Not sure this all still works
-    version: 26d41f2485c8db60fa83418393e296096009d480
+    version: 4431e94e83d63cbb78ac494d2027ef504e0d3628
   uros/rcutils:
     type: git
     url: https://github.com/yaskawa-global/rcutils.git
