@@ -32,7 +32,6 @@ ros2/rcl_interfaces/test_msgs
 ros2/rcl_logging/rcl_logging_spdlog
 ros2/rclc/rclc_examples
 ros2/rclc/rclc_lifecycle
-ros2/rcpputils
 ros2/rmw_implementation/test_rmw_implementation
 ros2/rosidl/rosidl_generator_tests
 ros2/rosidl/rosidl_typesupport_introspection_cpp
@@ -48,3 +47,4 @@ uros/tracetools/tracetools_launch
 uros/tracetools/tracetools_read
 uros/tracetools/tracetools_test
 uros/tracetools/tracetools_trace
+uros/tracetools/lttngpy
