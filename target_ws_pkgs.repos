@@ -89,7 +89,8 @@ repositories:
   uros/rmw-microxrcedds:
     type: git
     url: https://github.com/micro-ROS/rmw-microxrcedds.git
-    version: 5.0.1
+    #  Branch name: 'jazzy'
+    version: a698d4e9fc7f6780c44cc900a279d3f2d0c90856
   uros/rosidl_typesupport:
     type: git
     url: https://github.com/yaskawa-global/rosidl_typesupport.git
