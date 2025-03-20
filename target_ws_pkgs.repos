@@ -86,7 +86,8 @@ repositories:
   uros/rmw-microxrcedds:
     type: git
     url: https://github.com/micro-ROS/rmw-microxrcedds.git
-    version: 3.0.2
+    # Branch name: 'humble'
+    version: d8b8fbabded1200e3f4e328d2538e40224d48ea5
   uros/rosidl_typesupport:
     type: git
     url: https://github.com/yaskawa-global/rosidl_typesupport.git
