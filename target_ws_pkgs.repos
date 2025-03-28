@@ -89,7 +89,9 @@ repositories:
   uros/rmw-microxrcedds:
     type: git
     url: https://github.com/micro-ROS/rmw-microxrcedds.git
-    #  Branch name: 'jazzy'
+    # Two commits past 5.0.1 to include the fixes for UDP port parsing and
+    # rmw_init_options.enclave deinit leaking memory.
+    # Branch name: 'jazzy'
     version: a698d4e9fc7f6780c44cc900a279d3f2d0c90856
   uros/rosidl_typesupport:
     type: git
