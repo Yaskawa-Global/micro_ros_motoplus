@@ -86,6 +86,8 @@ repositories:
   uros/rmw-microxrcedds:
     type: git
     url: https://github.com/micro-ROS/rmw-microxrcedds.git
+    # Two commits past 3.0.3 to include the fixes for UDP port parsing and
+    # rmw_init_options.enclave deinit leaking memory.
     # Branch name: 'humble'
     version: d8b8fbabded1200e3f4e328d2538e40224d48ea5
   uros/rosidl_typesupport:
