@@ -18,7 +18,6 @@ extra/ros2/geometry2_tf2_msgs/tf2_ros_py
 extra/ros2/geometry2_tf2_msgs/tf2_sensor_msgs
 extra/ros2/geometry2_tf2_msgs/tf2_tools
 ros2/common_interfaces/common_interfaces
-ros2/common_interfaces/diagnostic_msgs
 ros2/common_interfaces/nav_msgs
 ros2/common_interfaces/sensor_msgs_py
 ros2/common_interfaces/shape_msgs
@@ -32,6 +31,7 @@ ros2/rcl_interfaces/test_msgs
 ros2/rcl_logging/rcl_logging_spdlog
 ros2/rclc/rclc_examples
 ros2/rclc/rclc_lifecycle
+ros2/rmw/rmw_security_common
 ros2/rmw_implementation/test_rmw_implementation
 ros2/rosidl/rosidl_generator_tests
 ros2/rosidl/rosidl_typesupport_introspection_cpp
