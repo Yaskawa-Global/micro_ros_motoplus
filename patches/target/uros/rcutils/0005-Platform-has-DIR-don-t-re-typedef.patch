@@ -1,0 +1,26 @@
+From ae53d565e250aa6d505dc05b5a67b2be2d8074e6 Mon Sep 17 00:00:00 2001
+From: gavanderhoorn <g.a.vanderhoorn@tudelft.nl>
+Date: Tue, 12 Oct 2021 19:07:17 +0200
+Subject: [PATCH 5/6] Platform has DIR, don't re-typedef
+
+---
+ src/filesystem.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/filesystem.c b/src/filesystem.c
+index cec71fb..2453f50 100644
+--- a/src/filesystem.c
++++ b/src/filesystem.c
+@@ -59,7 +59,9 @@ extern "C"
+ #endif  // _WIN32
+ 
+ #ifdef RCUTILS_NO_FILESYSTEM
++#ifndef YASKAWA_MOTOMAN_MOTOPLUS1 // TODO: we're using this as a platform ifdef
+ typedef int DIR;
++#endif  // _YASKAWA_MOTOMAN_MOTOPLUS1
+ #endif  // _RCUTILS_NO_FILESYSTEM
+ typedef struct rcutils_dir_iter_state_t
+ {
+-- 
+2.29.2.windows.2
+

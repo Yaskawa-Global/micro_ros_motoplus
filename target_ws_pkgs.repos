@@ -18,12 +18,8 @@ repositories:
     version: v2.0.1
   eProsima/Micro-XRCE-DDS-Client:
     type: git
-    url: https://github.com/yaskawa-global/microxrcedds_client_motoplus.git
-    # this is 2.4.3 from upstream, but with our own patches
-    # branch name: 'motoplus_dev/upstream/v2.4.3_with_patches_iron'
-    # NOTE: name says 'iron', but the same versions appear to be used for all
-    # supported ROS 2 distributions
-    version: 3178c635e09b73b371808c3be2d33e5109b74e9f
+    url: https://github.com/eProsima/Micro-XRCE-DDS-Client.git
+    version: v2.4.3
 
   ros2/libyaml_vendor:
     type: git
@@ -41,8 +37,8 @@ repositories:
 
   ros2/rmw:
     type: git
-    url: https://github.com/yaskawa-global/rmw.git
-    version: cb84993f73d74f308230fe6b2223f8711252dece
+    url: https://github.com/ros2/rmw.git
+    version: 7.3.1
   ros2/rmw_implementation:
     type: git
     url: https://github.com/ros2/rmw_implementation.git
@@ -71,17 +67,12 @@ repositories:
 
   uros/rcl:
     type: git
-    # this is a regular fork, but renamed due to potential clashes with ros2/rcl
-    url: https://github.com/yaskawa-global/micro_ros_rcl.git
-    # NOTE: the fork adds 6 additional patches, on top of 'upstream/jazzy'.
-    # Branch name: 'jazzy'
-    version: 032fee21bcbd75ad0a8b43fe5f1a6c983d5f0d34
+    url: https://github.com/micro-ROS/rcl.git
+    version: 8f2fd763347d83b21e3b90760f283d4468b60b55
   uros/rcutils:
     type: git
-    url: https://github.com/yaskawa-global/rcutils.git
-    # 'upstream/jazzy' (couple commits past 6.7.2), with 6 patches
-    #  Branch name: 'jazzy'
-    version: 0512f00dc515c1866eec5dc732e10f41228b707f
+    url: https://github.com/micro-ROS/rcutils.git
+    version: d911c12358ba7846195baa0d0e293a0169f6fa7d
   uros/micro_ros_utilities:
     type: git
     url: https://github.com/micro-ROS/micro_ros_utilities.git
@@ -95,10 +86,8 @@ repositories:
     version: a698d4e9fc7f6780c44cc900a279d3f2d0c90856
   uros/rosidl_typesupport:
     type: git
-    url: https://github.com/yaskawa-global/rosidl_typesupport.git
-    # 'upstream/jazzy' with a single patch of our own
-    #  Branch name: 'jazzy'
-    version: 79885fc1a3e73e0e4205475e7e3804bba73e1e1d
+    url: https://github.com/micro-ROS/rosidl_typesupport.git
+    version: 23f15cd3897f81f7e4938c303a7abbe7d06801ec
   uros/rosidl_typesupport_microxrcedds:
     type: git
     url: https://github.com/micro-ROS/rosidl_typesupport_microxrcedds.git
