@@ -1,0 +1,26 @@
+From cdab1b17a3d6a1e1f7996e92dc74ca9185d3700e Mon Sep 17 00:00:00 2001
+From: jimmy-mcelwain <jimmy.mcelwain@motoman.com>
+Date: Fri, 15 Nov 2024 15:14:35 -0500
+Subject: [PATCH 1/2] wip
+
+---
+ .../environment_hooks/ament_generate_package_environment.cmake | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/ament_cmake_core/cmake/environment_hooks/ament_generate_package_environment.cmake b/ament_cmake_core/cmake/environment_hooks/ament_generate_package_environment.cmake
+index cfb417f..f1eb255 100644
+--- a/ament_cmake_core/cmake/environment_hooks/ament_generate_package_environment.cmake
++++ b/ament_cmake_core/cmake/environment_hooks/ament_generate_package_environment.cmake
+@@ -59,7 +59,8 @@ function(ament_generate_package_environment)
+           set(all_hooks "${all_hooks}source;${hook}\n")
+           set(native_hook "/${hook}")
+           file(TO_NATIVE_PATH "${native_hook}" native_hook)
+-          if(WIN32)
++          # TODO(gavanderhoorn): fix this properly
++          if(NOT UNIX)
+             set(ENVIRONMENT_HOOKS
+                 "${ENVIRONMENT_HOOKS}call:ament_append_value AMENT_ENVIRONMENT_HOOKS[${PROJECT_NAME}] \"%AMENT_CURRENT_PREFIX%${native_hook}\"\n")
+           else()
+-- 
+2.29.2.windows.2
+

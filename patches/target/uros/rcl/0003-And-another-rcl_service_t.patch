@@ -1,0 +1,26 @@
+From 1748e9ea978bbd1c517fad46e18ab994b3d5aaa6 Mon Sep 17 00:00:00 2001
+From: gavanderhoorn <g.a.vanderhoorn@tudelft.nl>
+Date: Thu, 28 Mar 2024 10:54:48 +0100
+Subject: [PATCH 3/6] And another: rcl_service_t
+
+---
+ rcl/include/rcl/node.h | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/rcl/include/rcl/node.h b/rcl/include/rcl/node.h
+index e58df8d..e1caf39 100644
+--- a/rcl/include/rcl/node.h
++++ b/rcl/include/rcl/node.h
+@@ -40,7 +40,8 @@ extern "C"
+ extern const char * const RCL_DISABLE_LOANED_MESSAGES_ENV_VAR;
+ 
+ typedef struct rcl_node_impl_s rcl_node_impl_t;
+-typedef struct rcl_service_s rcl_service_t;
++// typedef struct rcl_service_s rcl_service_t;
++struct rcl_service_s;
+ 
+ /// Structure which encapsulates a ROS Node.
+ typedef struct rcl_node_s
+-- 
+2.29.2.windows.2
+

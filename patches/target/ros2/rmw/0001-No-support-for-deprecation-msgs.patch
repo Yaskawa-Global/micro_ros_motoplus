@@ -1,0 +1,30 @@
+From cb84993f73d74f308230fe6b2223f8711252dece Mon Sep 17 00:00:00 2001
+From: gavanderhoorn <g.a.vanderhoorn@tudelft.nl>
+Date: Fri, 24 Sep 2021 16:59:12 +0200
+Subject: [PATCH] No support for deprecation msgs
+
+---
+ rmw/include/rmw/types.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/rmw/include/rmw/types.h b/rmw/include/rmw/types.h
+index 6a59ae8..172be43 100644
+--- a/rmw/include/rmw/types.h
++++ b/rmw/include/rmw/types.h
+@@ -480,9 +480,13 @@ typedef enum RMW_PUBLIC_TYPE rmw_qos_liveliness_policy_e
+   /// Explicitly asserting node liveliness is required in this case.
+   /// This option is deprecated, use RMW_QOS_POLICY_LIVELINESS_MANUAL_BY_TOPIC if your application
+   /// requires to assert liveliness manually.
++#ifndef YASKAWA_MOTOMAN_MOTOPLUS1_GCC43
+   RMW_DECLARE_DEPRECATED(
+     RMW_QOS_POLICY_LIVELINESS_MANUAL_BY_NODE,
+     RMW_QOS_POLICY_LIVELINESS_MANUAL_BY_NODE_DEPRECATED_MSG) = 2,
++#else
++    RMW_QOS_POLICY_LIVELINESS_MANUAL_BY_NODE = 2,
++#endif
+ 
+   /// The signal that establishes a Topic is alive is at the Topic level. Only publishing a message
+   /// on the Topic or an explicit signal from the application to assert liveliness on the Topic
+-- 
+2.29.2.windows.2
+

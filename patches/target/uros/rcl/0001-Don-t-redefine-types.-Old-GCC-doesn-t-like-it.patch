@@ -1,0 +1,106 @@
+From 63ee616db7a26f114e31d8d82046b7789cf4ae41 Mon Sep 17 00:00:00 2001
+From: gavanderhoorn <g.a.vanderhoorn@tudelft.nl>
+Date: Wed, 2 Nov 2022 17:01:51 +0100
+Subject: [PATCH 1/6] Don't redefine types. Old GCC doesn't like it
+
+---
+ rcl_action/include/rcl_action/action_client.h    | 4 ++--
+ rcl_action/include/rcl_action/action_server.h    | 4 ++--
+ rcl_action/include/rcl_action/goal_handle.h      | 4 ++--
+ rcl_lifecycle/include/rcl_lifecycle/data_types.h | 6 +++---
+ 4 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/rcl_action/include/rcl_action/action_client.h b/rcl_action/include/rcl_action/action_client.h
+index e49966c..0f3f8e8 100644
+--- a/rcl_action/include/rcl_action/action_client.h
++++ b/rcl_action/include/rcl_action/action_client.h
+@@ -28,13 +28,13 @@ extern "C"
+ 
+ 
+ /// Internal action client implementation struct.
+-typedef struct rcl_action_client_impl_s rcl_action_client_impl_t;
++// typedef struct rcl_action_client_impl_s rcl_action_client_impl_t;
+ 
+ /// Structure which encapsulates a ROS action client.
+ typedef struct rcl_action_client_s
+ {
+   /// Pointer to the action client implementation
+-  rcl_action_client_impl_t * impl;
++  struct rcl_action_client_impl_s * impl;
+ } rcl_action_client_t;
+ 
+ /// Options available for a rcl_action_client_t.
+diff --git a/rcl_action/include/rcl_action/action_server.h b/rcl_action/include/rcl_action/action_server.h
+index 58fcf06..65197f1 100644
+--- a/rcl_action/include/rcl_action/action_server.h
++++ b/rcl_action/include/rcl_action/action_server.h
+@@ -31,13 +31,13 @@ extern "C"
+ #include "rosidl_runtime_c/action_type_support_struct.h"
+ 
+ /// Internal rcl_action implementation struct.
+-typedef struct rcl_action_server_impl_s rcl_action_server_impl_t;
++// typedef struct rcl_action_server_impl_s rcl_action_server_impl_t;
+ 
+ /// Structure which encapsulates a ROS Action Server.
+ typedef struct rcl_action_server_s
+ {
+   /// Pointer to the action server implementation
+-  rcl_action_server_impl_t * impl;
++  struct rcl_action_server_impl_s * impl;
+ } rcl_action_server_t;
+ 
+ /// Options available for a rcl_action_server_t.
+diff --git a/rcl_action/include/rcl_action/goal_handle.h b/rcl_action/include/rcl_action/goal_handle.h
+index 1cabc70..15a776c 100644
+--- a/rcl_action/include/rcl_action/goal_handle.h
++++ b/rcl_action/include/rcl_action/goal_handle.h
+@@ -27,13 +27,13 @@ extern "C"
+ 
+ 
+ /// Internal rcl action goal implementation struct.
+-typedef struct rcl_action_goal_handle_impl_s rcl_action_goal_handle_impl_t;
++//typedef struct rcl_action_goal_handle_impl_s rcl_action_goal_handle_impl_t;
+ 
+ /// Goal handle for an action.
+ typedef struct rcl_action_goal_handle_s
+ {
+   /// Pointer to the action goal handle implementation
+-  rcl_action_goal_handle_impl_t * impl;
++  struct rcl_action_goal_handle_impl_s * impl;
+ } rcl_action_goal_handle_t;
+ 
+ /// Return a rcl_action_goal_handle_t struct with members set to `NULL`.
+diff --git a/rcl_lifecycle/include/rcl_lifecycle/data_types.h b/rcl_lifecycle/include/rcl_lifecycle/data_types.h
+index f949494..c10ebfe 100644
+--- a/rcl_lifecycle/include/rcl_lifecycle/data_types.h
++++ b/rcl_lifecycle/include/rcl_lifecycle/data_types.h
+@@ -26,7 +26,7 @@ extern "C"
+ {
+ #endif
+ 
+-typedef struct rcl_lifecycle_transition_s rcl_lifecycle_transition_t;
++// typedef struct rcl_lifecycle_transition_s rcl_lifecycle_transition_t;
+ 
+ /// It contains the state of the lifecycle state machine
+ typedef struct rcl_lifecycle_state_s
+@@ -37,7 +37,7 @@ typedef struct rcl_lifecycle_state_s
+   uint8_t id;
+ 
+   /// Pointer to a struct with the valid transitions
+-  rcl_lifecycle_transition_t * valid_transitions;
++  struct rcl_lifecycle_transition_s * valid_transitions;
+   /// Number of valid transitions
+   unsigned int valid_transition_size;
+ } rcl_lifecycle_state_t;
+@@ -64,7 +64,7 @@ typedef struct rcl_lifecycle_transition_map_s
+   /// Number of states
+   unsigned int states_size;
+   /// Transitions used to generate the transition map
+-  rcl_lifecycle_transition_t * transitions;
++  struct rcl_lifecycle_transition_s * transitions;
+   /// Number of transitions
+   unsigned int transitions_size;
+ } rcl_lifecycle_transition_map_t;
+-- 
+2.29.2.windows.2
+

@@ -1,0 +1,25 @@
+From 41249c1dffae6e8bda1d4120398c2e5217b83698 Mon Sep 17 00:00:00 2001
+From: gavanderhoorn <g.a.vanderhoorn@tudelft.nl>
+Date: Tue, 12 Oct 2021 19:03:31 +0200
+Subject: [PATCH 2/6] And another in arguments_impl
+
+---
+ rcl/src/rcl/arguments_impl.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rcl/src/rcl/arguments_impl.h b/rcl/src/rcl/arguments_impl.h
+index 0428198..d3bf18d 100644
+--- a/rcl/src/rcl/arguments_impl.h
++++ b/rcl/src/rcl/arguments_impl.h
+@@ -20,7 +20,7 @@
+ #ifdef RCL_MICROROS_COMPLETE_IMPL
+ #include "rcl_yaml_param_parser/types.h"
+ #else
+-typedef bool rcl_params_t;
++// typedef bool rcl_params_t;
+ #endif // RCL_MICROROS_COMPLETE_IMPL
+ #include "./remap_impl.h"
+ 
+-- 
+2.29.2.windows.2
+
