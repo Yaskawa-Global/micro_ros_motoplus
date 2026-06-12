@@ -1,0 +1,77 @@
+From ebc5930054105c3fcf149eb235eac84175c5204e Mon Sep 17 00:00:00 2001
+From: gavanderhoorn <g.a.vanderhoorn@tudelft.nl>
+Date: Fri, 24 Sep 2021 18:20:58 +0200
+Subject: [PATCH 4/6] Work-around (hackish) for no shared lib support
+
+---
+ src/shared_library.c | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/src/shared_library.c b/src/shared_library.c
+index 4d73f0e..a918cbd 100644
+--- a/src/shared_library.c
++++ b/src/shared_library.c
+@@ -101,7 +101,11 @@ rcutils_load_shared_library(
+   // for further reference.
+ 
+ #ifndef _WIN32
++#ifdef YASKAWA_MOTOMAN_MOTOPLUS1
++  lib->lib_pointer = NULL;
++#else
+   lib->lib_pointer = dlopen(library_path, RTLD_LAZY);
++#endif
+   if (NULL == lib->lib_pointer) {
+     RCUTILS_SET_ERROR_MSG_WITH_FORMAT_STRING("dlopen error: %s", dlerror());
+     return RCUTILS_RET_ERROR;
+@@ -222,6 +226,7 @@ rcutils_get_symbol(const rcutils_shared_library_t * lib, const char * symbol_nam
+   }
+ 
+ #ifndef _WIN32
++#ifndef YASKAWA_MOTOMAN_MOTOPLUS1
+   void * lib_symbol = dlsym(lib->lib_pointer, symbol_name);
+   char * error = dlerror();
+   if (error != NULL) {
+@@ -230,6 +235,9 @@ rcutils_get_symbol(const rcutils_shared_library_t * lib, const char * symbol_nam
+       symbol_name, error);
+     return NULL;
+   }
++#else
++  void * lib_symbol = NULL;
++#endif
+ #else
+   void * lib_symbol = GetProcAddress((HINSTANCE)(lib->lib_pointer), symbol_name);
+   if (lib_symbol == NULL) {
+@@ -262,12 +270,16 @@ rcutils_has_symbol(const rcutils_shared_library_t * lib, const char * symbol_nam
+   }
+ 
+ #ifndef _WIN32
++#ifndef YASKAWA_MOTOMAN_MOTOPLUS1
+   // the correct way to test for an error is to call dlerror() to clear any old error conditions,
+   // then call dlsym(), and then call dlerror() again, saving its return value into a variable,
+   // and check whether this saved value is not NULL.
+   dlerror(); /* Clear any existing error */
+   void * lib_symbol = dlsym(lib->lib_pointer, symbol_name);
+   return dlerror() == NULL && lib_symbol != 0;
++#else
++  return false;
++#endif
+ #else
+   void * lib_symbol = GetProcAddress((HINSTANCE)(lib->lib_pointer), symbol_name);
+   return lib_symbol != NULL;
+@@ -290,8 +302,13 @@ rcutils_unload_shared_library(rcutils_shared_library_t * lib)
+ 
+   rcutils_ret_t ret = RCUTILS_RET_OK;
+ #ifndef _WIN32
++#ifndef YASKAWA_MOTOMAN_MOTOPLUS1
+   // The function dlclose() returns 0 on success, and nonzero on error.
+   int error_code = dlclose(lib->lib_pointer);
++#else
++  // just set it to non-zero
++  int error_code = 1234;
++#endif
+   if (error_code) {
+     RCUTILS_SET_ERROR_MSG_WITH_FORMAT_STRING("dlclose error: %s", dlerror());
+ #else
+-- 
+2.29.2.windows.2
+

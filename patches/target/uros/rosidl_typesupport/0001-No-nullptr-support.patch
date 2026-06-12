@@ -1,0 +1,34 @@
+From 79885fc1a3e73e0e4205475e7e3804bba73e1e1d Mon Sep 17 00:00:00 2001
+From: gavanderhoorn <g.a.vanderhoorn@tudelft.nl>
+Date: Tue, 12 Oct 2021 20:42:10 +0200
+Subject: [PATCH] No nullptr support
+
+---
+ rosidl_typesupport_c/src/type_support_dispatch.hpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/rosidl_typesupport_c/src/type_support_dispatch.hpp b/rosidl_typesupport_c/src/type_support_dispatch.hpp
+index 4d13575..ef0d2be 100644
+--- a/rosidl_typesupport_c/src/type_support_dispatch.hpp
++++ b/rosidl_typesupport_c/src/type_support_dispatch.hpp
+@@ -51,7 +51,7 @@ get_typesupport_handle_function(
+       typedef const TypeSupport * (* funcSignature)(void);
+ #ifndef ROSIDL_TYPESUPPORT_STATIC_TYPESUPPORT
+       void * sym = handle_shared_library_from_name(map, i, identifier);
+-      if (nullptr == sym) {
++      if (NULL == sym) {
+         continue;
+       }
+       funcSignature func = reinterpret_cast<funcSignature>(sym);
+@@ -65,7 +65,7 @@ get_typesupport_handle_function(
+   RCUTILS_SET_ERROR_MSG_WITH_FORMAT_STRING(
+     "Handle's typesupport identifier (%s) is not supported by this library",
+     handle->typesupport_identifier);
+-  return nullptr;
++  return NULL;
+ }
+ 
+ }  // namespace rosidl_typesupport_c
+-- 
+2.29.2.windows.2
+
