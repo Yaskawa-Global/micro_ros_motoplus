@@ -1,17 +1,17 @@
-From ebc5930054105c3fcf149eb235eac84175c5204e Mon Sep 17 00:00:00 2001
+From a1c05094ea6d0cf66619a9ad0977cf01c1719416 Mon Sep 17 00:00:00 2001
 From: gavanderhoorn <g.a.vanderhoorn@tudelft.nl>
 Date: Fri, 24 Sep 2021 18:20:58 +0200
-Subject: [PATCH 4/6] Work-around (hackish) for no shared lib support
+Subject: [PATCH 4/7] Work-around (hackish) for no shared lib support
 
 ---
  src/shared_library.c | 17 +++++++++++++++++
  1 file changed, 17 insertions(+)
 
 diff --git a/src/shared_library.c b/src/shared_library.c
-index 4d73f0e..a918cbd 100644
+index 202ad8a..ca3094f 100644
 --- a/src/shared_library.c
 +++ b/src/shared_library.c
-@@ -101,7 +101,11 @@ rcutils_load_shared_library(
+@@ -98,7 +98,11 @@ rcutils_load_shared_library(
    // for further reference.
  
  #ifndef _WIN32
@@ -23,7 +23,7 @@ index 4d73f0e..a918cbd 100644
    if (NULL == lib->lib_pointer) {
      RCUTILS_SET_ERROR_MSG_WITH_FORMAT_STRING("dlopen error: %s", dlerror());
      return RCUTILS_RET_ERROR;
-@@ -222,6 +226,7 @@ rcutils_get_symbol(const rcutils_shared_library_t * lib, const char * symbol_nam
+@@ -219,6 +223,7 @@ rcutils_get_symbol(const rcutils_shared_library_t * lib, const char * symbol_nam
    }
  
  #ifndef _WIN32
@@ -31,7 +31,7 @@ index 4d73f0e..a918cbd 100644
    void * lib_symbol = dlsym(lib->lib_pointer, symbol_name);
    char * error = dlerror();
    if (error != NULL) {
-@@ -230,6 +235,9 @@ rcutils_get_symbol(const rcutils_shared_library_t * lib, const char * symbol_nam
+@@ -227,6 +232,9 @@ rcutils_get_symbol(const rcutils_shared_library_t * lib, const char * symbol_nam
        symbol_name, error);
      return NULL;
    }
@@ -41,7 +41,7 @@ index 4d73f0e..a918cbd 100644
  #else
    void * lib_symbol = GetProcAddress((HINSTANCE)(lib->lib_pointer), symbol_name);
    if (lib_symbol == NULL) {
-@@ -262,12 +270,16 @@ rcutils_has_symbol(const rcutils_shared_library_t * lib, const char * symbol_nam
+@@ -259,12 +267,16 @@ rcutils_has_symbol(const rcutils_shared_library_t * lib, const char * symbol_nam
    }
  
  #ifndef _WIN32
@@ -58,7 +58,7 @@ index 4d73f0e..a918cbd 100644
  #else
    void * lib_symbol = GetProcAddress((HINSTANCE)(lib->lib_pointer), symbol_name);
    return lib_symbol != NULL;
-@@ -290,8 +302,13 @@ rcutils_unload_shared_library(rcutils_shared_library_t * lib)
+@@ -287,8 +299,13 @@ rcutils_unload_shared_library(rcutils_shared_library_t * lib)
  
    rcutils_ret_t ret = RCUTILS_RET_OK;
  #ifndef _WIN32
@@ -73,5 +73,5 @@ index 4d73f0e..a918cbd 100644
      RCUTILS_SET_ERROR_MSG_WITH_FORMAT_STRING("dlclose error: %s", dlerror());
  #else
 -- 
-2.29.2.windows.2
+2.43.0
 

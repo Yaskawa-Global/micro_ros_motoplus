@@ -1,32 +1,20 @@
-From e540eedce6d411f03d58dbdf6cef964936953472 Mon Sep 17 00:00:00 2001
+From f7ec24fa166abb58bd066b8b8744f9c67d910670 Mon Sep 17 00:00:00 2001
 From: jimmy-mcelwain <jimmy.mcelwain@motoman.com>
 Date: Fri, 8 Nov 2024 16:12:59 -0500
 Subject: [PATCH 4/6] Add rcl_yaml_param_parser and fix
  ament_target_dependencies calls
 
 ---
- .gitignore                          | 1 +
  rcl/CMakeLists.txt                  | 4 ++--
- rcl/src/rcl/init.c                  | 2 +-
- rcl/src/rcl/node.c                  | 4 ++--
  rcl_yaml_param_parser/COLCON_IGNORE | 0
- 5 files changed, 6 insertions(+), 5 deletions(-)
+ 2 files changed, 2 insertions(+), 2 deletions(-)
  delete mode 100644 rcl_yaml_param_parser/COLCON_IGNORE
 
-diff --git a/.gitignore b/.gitignore
-index b8bd026..b5c1dd7 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -26,3 +26,4 @@
- *.exe
- *.out
- *.app
-+/.vs
 diff --git a/rcl/CMakeLists.txt b/rcl/CMakeLists.txt
-index e748c51..66eef74 100644
+index 3cc71cf..d235de3 100644
 --- a/rcl/CMakeLists.txt
 +++ b/rcl/CMakeLists.txt
-@@ -117,13 +117,13 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
+@@ -116,13 +116,13 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
  endif()
  
  if(NOT RCL_MICROROS)
@@ -42,42 +30,9 @@ index e748c51..66eef74 100644
      ${RCL_LOGGING_IMPL}
    )
  endif()
-diff --git a/rcl/src/rcl/init.c b/rcl/src/rcl/init.c
-index 068d681..ed487e7 100644
---- a/rcl/src/rcl/init.c
-+++ b/rcl/src/rcl/init.c
-@@ -277,7 +277,7 @@ rcl_init(
-     fail_ret = RCL_RET_BAD_ALLOC;
-     goto fail;
-   }
--#endif //RCL_MICROROS
-+#endif // RCL_MICROROS_COMPLETE_IMPL
- 
-   int validation_result;
-   size_t invalid_index;
-diff --git a/rcl/src/rcl/node.c b/rcl/src/rcl/node.c
-index 0a1c6c6..25ccaf2 100644
---- a/rcl/src/rcl/node.c
-+++ b/rcl/src/rcl/node.c
-@@ -596,7 +596,7 @@ void rcl_node_type_description_service_handle_request(
-   }
- 
-   response->successful = true;
--#endif //RCL_MICROROS
-+#endif // RCL_MICROROS_COMPLETE_IMPL
- }
- 
- rcl_ret_t rcl_node_type_description_service_init(
-@@ -640,5 +640,5 @@ rcl_ret_t rcl_node_type_description_service_init(
- #else
-   (void)node;
-   return RCL_RET_UNSUPPORTED;
--#endif //RCL_MICROROS
-+#endif // RCL_MICROROS_COMPLETE_IMPL
- }
 diff --git a/rcl_yaml_param_parser/COLCON_IGNORE b/rcl_yaml_param_parser/COLCON_IGNORE
 deleted file mode 100644
 index e69de29..0000000
 -- 
-2.29.2.windows.2
+2.43.0
 

@@ -1,7 +1,7 @@
-From 334884749bfa3e75189097f1125f7fa939e65946 Mon Sep 17 00:00:00 2001
+From ae86b7ff5e6f3dc37a738908a0e42fcdb3f57ec1 Mon Sep 17 00:00:00 2001
 From: gavanderhoorn <g.a.vanderhoorn@tudelft.nl>
 Date: Fri, 24 Sep 2021 18:19:57 +0200
-Subject: [PATCH 2/6] Special strerror_r handling
+Subject: [PATCH 2/7] Special strerror_r handling
 
 ---
  src/strerror.c | 7 +++++++
@@ -26,5 +26,5 @@ index a425010..0dae670 100644
    /* GNU-specific */
    char * msg = strerror_r(errno, buffer, buffer_length);
 -- 
-2.29.2.windows.2
+2.43.0
 

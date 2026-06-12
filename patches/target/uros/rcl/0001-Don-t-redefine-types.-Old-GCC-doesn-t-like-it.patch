@@ -1,4 +1,4 @@
-From 63ee616db7a26f114e31d8d82046b7789cf4ae41 Mon Sep 17 00:00:00 2001
+From 5f59954828c4d03e7f0223d0eced6b10d4c2ceed Mon Sep 17 00:00:00 2001
 From: gavanderhoorn <g.a.vanderhoorn@tudelft.nl>
 Date: Wed, 2 Nov 2022 17:01:51 +0100
 Subject: [PATCH 1/6] Don't redefine types. Old GCC doesn't like it
@@ -11,10 +11,10 @@ Subject: [PATCH 1/6] Don't redefine types. Old GCC doesn't like it
  4 files changed, 9 insertions(+), 9 deletions(-)
 
 diff --git a/rcl_action/include/rcl_action/action_client.h b/rcl_action/include/rcl_action/action_client.h
-index e49966c..0f3f8e8 100644
+index 69ab136..8640058 100644
 --- a/rcl_action/include/rcl_action/action_client.h
 +++ b/rcl_action/include/rcl_action/action_client.h
-@@ -28,13 +28,13 @@ extern "C"
+@@ -30,13 +30,13 @@ extern "C"
  
  
  /// Internal action client implementation struct.
@@ -31,10 +31,10 @@ index e49966c..0f3f8e8 100644
  
  /// Options available for a rcl_action_client_t.
 diff --git a/rcl_action/include/rcl_action/action_server.h b/rcl_action/include/rcl_action/action_server.h
-index 58fcf06..65197f1 100644
+index 70fc4fc..cf9a349 100644
 --- a/rcl_action/include/rcl_action/action_server.h
 +++ b/rcl_action/include/rcl_action/action_server.h
-@@ -31,13 +31,13 @@ extern "C"
+@@ -34,13 +34,13 @@ extern "C"
  #include "rosidl_runtime_c/action_type_support_struct.h"
  
  /// Internal rcl_action implementation struct.
@@ -51,10 +51,10 @@ index 58fcf06..65197f1 100644
  
  /// Options available for a rcl_action_server_t.
 diff --git a/rcl_action/include/rcl_action/goal_handle.h b/rcl_action/include/rcl_action/goal_handle.h
-index 1cabc70..15a776c 100644
+index 46ea29e..cf529a5 100644
 --- a/rcl_action/include/rcl_action/goal_handle.h
 +++ b/rcl_action/include/rcl_action/goal_handle.h
-@@ -27,13 +27,13 @@ extern "C"
+@@ -28,13 +28,13 @@ extern "C"
  
  
  /// Internal rcl action goal implementation struct.
@@ -69,9 +69,9 @@ index 1cabc70..15a776c 100644
 +  struct rcl_action_goal_handle_impl_s * impl;
  } rcl_action_goal_handle_t;
  
- /// Return a rcl_action_goal_handle_t struct with members set to `NULL`.
+ /// Define invaild value for goal terminal timestamp
 diff --git a/rcl_lifecycle/include/rcl_lifecycle/data_types.h b/rcl_lifecycle/include/rcl_lifecycle/data_types.h
-index f949494..c10ebfe 100644
+index 6a00233..643d194 100644
 --- a/rcl_lifecycle/include/rcl_lifecycle/data_types.h
 +++ b/rcl_lifecycle/include/rcl_lifecycle/data_types.h
 @@ -26,7 +26,7 @@ extern "C"
@@ -102,5 +102,5 @@ index f949494..c10ebfe 100644
    unsigned int transitions_size;
  } rcl_lifecycle_transition_map_t;
 -- 
-2.29.2.windows.2
+2.43.0
 
