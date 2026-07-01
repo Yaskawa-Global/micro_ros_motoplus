@@ -71,7 +71,7 @@ repositories:
   uros/rcutils:
     type: git
     url: https://github.com/micro-ROS/rcutils.git
-    version: 8f322232bc71242e483d6bcbe8c1ba731ee8134e
+    version: 51cdbe2637e6444288c0ed7f50a127649dfdf127
   uros/micro_ros_utilities:
     type: git
     url: https://github.com/micro-ROS/micro_ros_utilities.git
