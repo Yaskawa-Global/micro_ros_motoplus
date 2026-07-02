@@ -1,7 +1,7 @@
-From 0512f00dc515c1866eec5dc732e10f41228b707f Mon Sep 17 00:00:00 2001
+From 1463c21dc6c136d629b77901cb1479c6d4b4c4e1 Mon Sep 17 00:00:00 2001
 From: gavanderhoorn <g.a.vanderhoorn@tudelft.nl>
 Date: Sat, 24 Jun 2023 19:12:56 +0200
-Subject: [PATCH 6/6] Avoid clash with M+ macros
+Subject: [PATCH 6/7] Avoid clash with M+ macros
 
 Note: max(..) does not appear to be used.
 ---
@@ -40,5 +40,5 @@ index a1be113..107e4fb 100644
      memcpy(ctx->data + ctx->datalen, data + i, copy_len);
      ctx->datalen += copy_len;
 -- 
-2.29.2.windows.2
+2.43.0
 

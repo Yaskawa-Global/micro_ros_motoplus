@@ -3,7 +3,7 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 
-# Revisions checked out mostly target ROS 2 Jazzy (or the micro-ROS equivalents).
+# Revisions checked out mostly target ROS 2 Kilted (or the micro-ROS equivalents).
 #
 # NOTE: this list has not been pruned. It's possible some of these repositories
 # are not actually needed for the MotoPlus platform.
@@ -24,111 +24,97 @@ repositories:
   ros2/libyaml_vendor:
     type: git
     url: https://github.com/ros2/libyaml_vendor.git
-    version: 1.6.3
+    version: 1.7.1
 
   ros2/rcl_logging:
     type: git
     url: https://github.com/ros2/rcl_logging.git
-    version: 3.1.0
+    version: 3.2.2
   ros2/rclc:
     type: git
     url: https://github.com/ros2/rclc.git
-    version: 995cda8c68456c7477ed103d9419a161fd068960
+    version: 6.2.3
 
   ros2/rmw:
     type: git
     url: https://github.com/ros2/rmw.git
-    version: 7.3.1
+    version: 7.8.2
   ros2/rmw_implementation:
     type: git
     url: https://github.com/ros2/rmw_implementation.git
-    version: 2.15.3
-  # needed because of https://github.com/ros2/rcl_interfaces/issues/144
+    version: 3.0.4
   ros2/rosidl:
     type: git
     url: https://github.com/ros2/rosidl.git
-    version: 4.6.4
+    version: 4.9.5
   ros2/rosidl_core:
     type: git
     url: https://github.com/ros2/rosidl_core.git
-    version: 0.2.0
+    version: 0.3.1
   ros2/rosidl_dds:
     type: git
     url: https://github.com/ros2/rosidl_dds.git
-    version: 0.11.1
+    version: 0.12.1
   ros2/rosidl_defaults:
     type: git
     url: https://github.com/ros2/rosidl_defaults.git
-    version: 1.6.0
+    version: 1.7.1
   ros2/rosidl_dynamic_typesupport:
     type: git
     url: https://github.com/ros2/rosidl_dynamic_typesupport.git
-    version: 0.1.2
+    version: 0.3.1
 
   uros/rcl:
     type: git
     url: https://github.com/micro-ROS/rcl.git
-    version: 8f2fd763347d83b21e3b90760f283d4468b60b55
+    version: e8738a46bc2804485cf2f03ec8344cfc20e6a8d8
   uros/rcutils:
     type: git
     url: https://github.com/micro-ROS/rcutils.git
-    version: d911c12358ba7846195baa0d0e293a0169f6fa7d
+    version: 51cdbe2637e6444288c0ed7f50a127649dfdf127
   uros/micro_ros_utilities:
     type: git
     url: https://github.com/micro-ROS/micro_ros_utilities.git
-    version: 5.0.1
+    version: 62763fb71824d3b27cdc62f23dfb8af2a7290d51
   uros/rmw-microxrcedds:
     type: git
     url: https://github.com/micro-ROS/rmw-microxrcedds.git
-    # Two commits past 5.0.1 to include the fixes for UDP port parsing and
-    # rmw_init_options.enclave deinit leaking memory.
-    # Branch name: 'jazzy'
-    version: a698d4e9fc7f6780c44cc900a279d3f2d0c90856
+    version: 6b10d6efcef8c018dde921db07cddd65a30c5e17
   uros/rosidl_typesupport:
     type: git
     url: https://github.com/micro-ROS/rosidl_typesupport.git
-    version: 23f15cd3897f81f7e4938c303a7abbe7d06801ec
+    version: 75cf23ab6cf286f28acb88cc982998580738fdda
   uros/rosidl_typesupport_microxrcedds:
     type: git
     url: https://github.com/micro-ROS/rosidl_typesupport_microxrcedds.git
-    version: 5.0.1
+    version: 667596bf8cc35a3f5021a48f6185a053bf4c163e
 
 
 
   uros/tracetools:
     type: git
     url: https://github.com/ros2/ros2_tracing.git
-    version: 8d898b5ff0d79ef34eeae73a6ef3a20b30fe1ac8
-    # NOTE: this is not the same as the jazzy release. 
-    # This is a commit on rolling which is a few commits
-    # past where jazzy and rolling diverged. 
-    # This commit contains a necessary change
-    # The __attribute__((deprecated(msg))) form is 
-    # only supported in GCC version 4.5+, which is newer than 
-    # what we are using. The MotoPlus compiler does not like this line:
-    # https://github.com/ros2/ros2_tracing/blob/42e26cca398246db56881e17394abf9f8d3b7755/tracetools/include/tracetools/tracetools.h#L130
-    # We could make a new fork and cherry pick this commit instead
-    # but decided against it to avoid having to maintain a fork. 
+    version: 8.6.0
 
   # messages/services/actions
   ros2/common_interfaces:
     type: git
     url: https://github.com/ros2/common_interfaces.git
-    version: 5.3.5
+    version: 5.5.0
   ros2/rcl_interfaces:
     type: git
     url: https://github.com/ros2/rcl_interfaces.git
-    version: 2.0.2
+    version: 2.3.0
   ros2/unique_identifier_msgs:
     type: git
     url: https://github.com/ros2/unique_identifier_msgs.git
-    version: 2.5.0
+    version: 2.7.0
 
   # only used to determine the ROS 2 codename during packaging
   ros2/ros_environment:
     type: git
     url: https://github.com/ros/ros_environment.git
-    version: 4.2.1
+    version: 4.3.1
 
   # extra dependencies needed for MotoROS2
   extra/industrial_msgs:
@@ -139,11 +125,11 @@ repositories:
   extra/ros-controls/control_msgs:
     type: git
     url: https://github.com/ros-controls/control_msgs.git
-    version: 5.2.0
+    version: 6.9.0
   extra/ros2/geometry2_tf2_msgs:
     type: git
     url: https://github.com/ros2/geometry2.git
-    version: 0.36.4
+    version: 0.41.7
   extra/motoros2_interfaces:
     type: git
     url: https://github.com/yaskawa-global/motoros2_interfaces.git

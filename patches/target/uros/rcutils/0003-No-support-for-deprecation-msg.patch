@@ -1,14 +1,14 @@
-From 783e6c2233235f97f40df231f393b82921cbe9a6 Mon Sep 17 00:00:00 2001
+From df6c9fd7f85abea288f49ec79452ba5cf93d0c23 Mon Sep 17 00:00:00 2001
 From: gavanderhoorn <g.a.vanderhoorn@tudelft.nl>
 Date: Fri, 24 Sep 2021 18:20:27 +0200
-Subject: [PATCH 3/6] No support for deprecation msg
+Subject: [PATCH 3/7] No support for deprecation msg
 
 ---
  include/rcutils/macros.h | 4 ++++
  1 file changed, 4 insertions(+)
 
 diff --git a/include/rcutils/macros.h b/include/rcutils/macros.h
-index b6d435f..1634590 100644
+index 2e42163..c9af7da 100644
 --- a/include/rcutils/macros.h
 +++ b/include/rcutils/macros.h
 @@ -118,8 +118,12 @@ extern "C"
@@ -25,5 +25,5 @@ index b6d435f..1634590 100644
  #endif
  
 -- 
-2.29.2.windows.2
+2.43.0
 

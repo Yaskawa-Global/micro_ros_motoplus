@@ -1,4 +1,4 @@
-From 032fee21bcbd75ad0a8b43fe5f1a6c983d5f0d34 Mon Sep 17 00:00:00 2001
+From 7dd778085caddce04ee1dc99c6c79ccd8d9aaa60 Mon Sep 17 00:00:00 2001
 From: jimmy-mcelwain <jimmy.mcelwain@motoman.com>
 Date: Thu, 21 Nov 2024 11:08:11 -0500
 Subject: [PATCH 6/6] Get rid of references to static_assert
@@ -9,10 +9,10 @@ static_assert is not supported in MotoPlus SDK
  1 file changed, 5 deletions(-)
 
 diff --git a/rcl/src/rcl/wait.c b/rcl/src/rcl/wait.c
-index e6c4567..ec5bc01 100644
+index 145c1ea..50939de 100644
 --- a/rcl/src/rcl/wait.c
 +++ b/rcl/src/rcl/wait.c
-@@ -560,11 +560,6 @@ rcl_wait(rcl_wait_set_t * wait_set, int64_t timeout)
+@@ -547,11 +547,6 @@ rcl_wait(rcl_wait_set_t * wait_set, int64_t timeout)
    int64_t min_next_call_time[RCL_STEADY_TIME + 1];
    rcl_clock_t * clocks[RCL_STEADY_TIME + 1] = {NULL, NULL, NULL, NULL};
  
@@ -25,5 +25,5 @@ index e6c4567..ec5bc01 100644
    min_next_call_time[RCL_ROS_TIME] = INT64_MAX;
    min_next_call_time[RCL_SYSTEM_TIME] = INT64_MAX;
 -- 
-2.29.2.windows.2
+2.43.0
 
