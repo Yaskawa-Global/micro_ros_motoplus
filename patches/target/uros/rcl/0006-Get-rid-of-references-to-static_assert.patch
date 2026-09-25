@@ -1,4 +1,4 @@
-From 032fee21bcbd75ad0a8b43fe5f1a6c983d5f0d34 Mon Sep 17 00:00:00 2001
+From 6d2d18959490fcb848f1d0d9a365c5159fa18de1 Mon Sep 17 00:00:00 2001
 From: jimmy-mcelwain <jimmy.mcelwain@motoman.com>
 Date: Thu, 21 Nov 2024 11:08:11 -0500
 Subject: [PATCH 6/6] Get rid of references to static_assert

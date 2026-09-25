@@ -1,4 +1,4 @@
-From e540eedce6d411f03d58dbdf6cef964936953472 Mon Sep 17 00:00:00 2001
+From 52b47978aecabf82eae981cfe89f4bff6cdbe4a6 Mon Sep 17 00:00:00 2001
 From: jimmy-mcelwain <jimmy.mcelwain@motoman.com>
 Date: Fri, 8 Nov 2024 16:12:59 -0500
 Subject: [PATCH 4/6] Add rcl_yaml_param_parser and fix
@@ -43,18 +43,18 @@ index e748c51..66eef74 100644
    )
  endif()
 diff --git a/rcl/src/rcl/init.c b/rcl/src/rcl/init.c
-index 068d681..ed487e7 100644
+index 7de60ae..165bb8b 100644
 --- a/rcl/src/rcl/init.c
 +++ b/rcl/src/rcl/init.c
-@@ -277,7 +277,7 @@ rcl_init(
-     fail_ret = RCL_RET_BAD_ALLOC;
+@@ -308,7 +308,7 @@ rcl_init(
+     fail_ret = ret;
      goto fail;
    }
 -#endif //RCL_MICROROS
 +#endif // RCL_MICROROS_COMPLETE_IMPL
  
-   int validation_result;
-   size_t invalid_index;
+   // Initialize rmw_init.
+   rmw_ret_t rmw_ret = rmw_init(
 diff --git a/rcl/src/rcl/node.c b/rcl/src/rcl/node.c
 index 0a1c6c6..25ccaf2 100644
 --- a/rcl/src/rcl/node.c
