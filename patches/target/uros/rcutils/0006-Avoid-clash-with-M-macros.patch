@@ -1,0 +1,44 @@
+From 0512f00dc515c1866eec5dc732e10f41228b707f Mon Sep 17 00:00:00 2001
+From: gavanderhoorn <g.a.vanderhoorn@tudelft.nl>
+Date: Sat, 24 Jun 2023 19:12:56 +0200
+Subject: [PATCH 6/6] Avoid clash with M+ macros
+
+Note: max(..) does not appear to be used.
+---
+ src/sha256.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/sha256.c b/src/sha256.c
+index a1be113..107e4fb 100644
+--- a/src/sha256.c
++++ b/src/sha256.c
+@@ -17,11 +17,16 @@
+ 
+ #include "rcutils/sha256.h"
+ 
+-static inline size_t min(size_t a, size_t b)
++static inline size_t __min(size_t a, size_t b)
+ {
+   return a < b ? a : b;
+ }
+ 
++static inline size_t __max(size_t a, size_t b)
++{
++  return a > b ? a : b;
++}
++
+ static inline uint32_t rotright(uint32_t a, const uint8_t b)
+ {
+   assert(b < 32);
+@@ -135,7 +140,7 @@ void rcutils_sha256_update(rcutils_sha256_ctx_t * ctx, const uint8_t * data, siz
+   while (i < len) {
+     data_remaining = len - i;
+     block_remaining = 64 - ctx->datalen;
+-    copy_len = min(min(block_remaining, data_remaining), 64);
++    copy_len = __min(__min(block_remaining, data_remaining), 64);
+ 
+     memcpy(ctx->data + ctx->datalen, data + i, copy_len);
+     ctx->datalen += copy_len;
+-- 
+2.29.2.windows.2
+

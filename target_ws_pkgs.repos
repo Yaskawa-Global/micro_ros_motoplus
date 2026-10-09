@@ -18,44 +18,40 @@ repositories:
     version: v2.0.1
   eProsima/Micro-XRCE-DDS-Client:
     type: git
-    url: https://github.com/yaskawa-global/microxrcedds_client_motoplus.git
-    # this is 2.4.3 from upstream, but with our own patches
-    # branch name: 'motoplus_dev/upstream/v2.4.3_with_patches_iron'
-    # NOTE: name says 'iron', but the same versions appear to be used for all
-    # supported ROS 2 distributions
-    version: 3178c635e09b73b371808c3be2d33e5109b74e9f
+    url: https://github.com/eProsima/Micro-XRCE-DDS-Client.git
+    version: v2.4.3
 
   ros2/libyaml_vendor:
     type: git
     url: https://github.com/ros2/libyaml_vendor.git
-    version: 1.6.3
+    version: 1.6.4
 
   ros2/rcl_logging:
     type: git
     url: https://github.com/ros2/rcl_logging.git
-    version: 3.1.0
+    version: 3.1.1
   ros2/rclc:
     type: git
     url: https://github.com/ros2/rclc.git
-    version: 995cda8c68456c7477ed103d9419a161fd068960
+    version: 6.1.2
 
   ros2/rmw:
     type: git
-    url: https://github.com/yaskawa-global/rmw.git
-    version: cb84993f73d74f308230fe6b2223f8711252dece
+    url: https://github.com/ros2/rmw.git
+    version: 7.3.4
   ros2/rmw_implementation:
     type: git
     url: https://github.com/ros2/rmw_implementation.git
-    version: 2.15.3
+    version: 2.15.6
   # needed because of https://github.com/ros2/rcl_interfaces/issues/144
   ros2/rosidl:
     type: git
     url: https://github.com/ros2/rosidl.git
-    version: 4.6.4
+    version: 4.6.9
   ros2/rosidl_core:
     type: git
     url: https://github.com/ros2/rosidl_core.git
-    version: 0.2.0
+    version: 0.2.1
   ros2/rosidl_dds:
     type: git
     url: https://github.com/ros2/rosidl_dds.git
@@ -63,7 +59,7 @@ repositories:
   ros2/rosidl_defaults:
     type: git
     url: https://github.com/ros2/rosidl_defaults.git
-    version: 1.6.0
+    version: 1.6.1
   ros2/rosidl_dynamic_typesupport:
     type: git
     url: https://github.com/ros2/rosidl_dynamic_typesupport.git
@@ -71,17 +67,13 @@ repositories:
 
   uros/rcl:
     type: git
-    # this is a regular fork, but renamed due to potential clashes with ros2/rcl
-    url: https://github.com/yaskawa-global/micro_ros_rcl.git
-    # NOTE: the fork adds 6 additional patches, on top of 'upstream/jazzy'.
-    # Branch name: 'jazzy'
-    version: 032fee21bcbd75ad0a8b43fe5f1a6c983d5f0d34
+    url: https://github.com/micro-ROS/rcl.git
+    # exclude rcl_validate_enclave_name and rcl_get_security_options_from_environment from micro-ROS (#24) (#25)
+    version: 5fb4e39648ab214a76bc306411f7df93a0b6b3b2
   uros/rcutils:
     type: git
-    url: https://github.com/yaskawa-global/rcutils.git
-    # 'upstream/jazzy' (couple commits past 6.7.2), with 6 patches
-    #  Branch name: 'jazzy'
-    version: 0512f00dc515c1866eec5dc732e10f41228b707f
+    url: https://github.com/micro-ROS/rcutils.git
+    version: 0a9367e79f91da64a81b12dd4f8b69f8c0fc4baa
   uros/micro_ros_utilities:
     type: git
     url: https://github.com/micro-ROS/micro_ros_utilities.git
@@ -89,20 +81,17 @@ repositories:
   uros/rmw-microxrcedds:
     type: git
     url: https://github.com/micro-ROS/rmw-microxrcedds.git
-    # Two commits past 5.0.1 to include the fixes for UDP port parsing and
-    # rmw_init_options.enclave deinit leaking memory.
     # Branch name: 'jazzy'
-    version: a698d4e9fc7f6780c44cc900a279d3f2d0c90856
+    version: e64d79f98423c4be77ac24bcb3f14be13144fe6e
   uros/rosidl_typesupport:
     type: git
-    url: https://github.com/yaskawa-global/rosidl_typesupport.git
-    # 'upstream/jazzy' with a single patch of our own
-    #  Branch name: 'jazzy'
-    version: 79885fc1a3e73e0e4205475e7e3804bba73e1e1d
+    url: https://github.com/micro-ROS/rosidl_typesupport.git
+    version: 352f208e29f33d7a5e78f4aec38ac0056d9ff23e
   uros/rosidl_typesupport_microxrcedds:
     type: git
     url: https://github.com/micro-ROS/rosidl_typesupport_microxrcedds.git
-    version: 5.0.1
+    # 3 commits past 5.0.1
+    version: 9672e11175e616bc3fb7449288d0868ab36419bf
 
 
 
@@ -125,15 +114,15 @@ repositories:
   ros2/common_interfaces:
     type: git
     url: https://github.com/ros2/common_interfaces.git
-    version: 5.3.5
+    version: 5.3.8
   ros2/rcl_interfaces:
     type: git
     url: https://github.com/ros2/rcl_interfaces.git
-    version: 2.0.2
+    version: 2.0.4
   ros2/unique_identifier_msgs:
     type: git
     url: https://github.com/ros2/unique_identifier_msgs.git
-    version: 2.5.0
+    version: 2.5.1
 
   # only used to determine the ROS 2 codename during packaging
   ros2/ros_environment:
@@ -150,11 +139,11 @@ repositories:
   extra/ros-controls/control_msgs:
     type: git
     url: https://github.com/ros-controls/control_msgs.git
-    version: 5.2.0
+    version: 5.10.0
   extra/ros2/geometry2_tf2_msgs:
     type: git
     url: https://github.com/ros2/geometry2.git
-    version: 0.36.4
+    version: 0.36.23
   extra/motoros2_interfaces:
     type: git
     url: https://github.com/yaskawa-global/motoros2_interfaces.git
