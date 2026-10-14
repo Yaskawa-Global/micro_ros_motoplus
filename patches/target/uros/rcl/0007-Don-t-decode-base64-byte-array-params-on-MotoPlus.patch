@@ -1,0 +1,40 @@
+From a9ae66ae7128987f77c917d6fb6b690f8e86aa59 Mon Sep 17 00:00:00 2001
+From: jimmy-mcelwain <jimmy.mcelwain@motoman.com>
+Date: Wed, 14 Oct 2026 13:44:18 -0400
+Subject: [PATCH 7/7] Don't decode base64 byte array params on MotoPlus
+
+---
+ rcl_yaml_param_parser/src/parse.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/rcl_yaml_param_parser/src/parse.c b/rcl_yaml_param_parser/src/parse.c
+index b22bd14..a8b8df4 100644
+--- a/rcl_yaml_param_parser/src/parse.c
++++ b/rcl_yaml_param_parser/src/parse.c
+@@ -744,6 +744,15 @@ _get_binary_array(
+   void ** ret_val,
+   const rcutils_allocator_t allocator)
+ {
++#ifdef YASKAWA_MOTOMAN_MOTOPLUS1
++  // rcutils is built in micro-ROS mode on MotoPlus, which excludes base64
++  (void)value;
++  (void)val_type;
++  (void)ret_val;
++  (void)allocator;
++  RCUTILS_SET_ERROR_MSG("Byte array parameters are not supported on MotoPlus");
++  return RCUTILS_RET_ERROR;
++#else
+   rcutils_uint8_array_t byte_array = rcutils_get_zero_initialized_uint8_array();
+ 
+   if (RCUTILS_RET_OK != rcutils_decode_base64(value, &byte_array, &allocator)) {
+@@ -766,6 +775,7 @@ _get_binary_array(
+   *val_type = DATA_TYPE_BYTE;
+   *ret_val = dst;
+   return RCUTILS_RET_OK;
++#endif
+ }
+ 
+ rcutils_ret_t
+-- 
+2.44.0.windows.1
+

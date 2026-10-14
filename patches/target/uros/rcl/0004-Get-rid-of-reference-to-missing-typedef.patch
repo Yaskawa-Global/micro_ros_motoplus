@@ -1,14 +1,14 @@
-From e4f71c134025698cd7d550e147349c8444709a8b Mon Sep 17 00:00:00 2001
+From 5071651ae7365c307dd70165c1941bc60c53e298 Mon Sep 17 00:00:00 2001
 From: jimmy-mcelwain <jimmy.mcelwain@motoman.com>
 Date: Thu, 21 Nov 2024 11:00:14 -0500
-Subject: [PATCH 5/6] Get rid of reference to missing typedef
+Subject: [PATCH 4/7] Get rid of reference to missing typedef
 
 ---
  rcl/include/rcl/node.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/rcl/include/rcl/node.h b/rcl/include/rcl/node.h
-index e1caf39..90a19ff 100644
+index d5da8d5..2a81e18 100644
 --- a/rcl/include/rcl/node.h
 +++ b/rcl/include/rcl/node.h
 @@ -587,7 +587,7 @@ rcl_get_disable_loaned_message(bool * disable_loaned_message);
@@ -21,5 +21,5 @@ index e1caf39..90a19ff 100644
  
  /// Process a single pending request to the GetTypeDescription service.
 -- 
-2.29.2.windows.2
+2.44.0.windows.1
 

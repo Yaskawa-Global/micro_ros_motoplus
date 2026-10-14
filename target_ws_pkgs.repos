@@ -3,7 +3,7 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 
-# Revisions checked out mostly target ROS 2 Jazzy (or the micro-ROS equivalents).
+# Revisions checked out mostly target ROS 2 Lyrical (or the micro-ROS equivalents).
 #
 # NOTE: this list has not been pruned. It's possible some of these repositories
 # are not actually needed for the MotoPlus platform.
@@ -15,120 +15,107 @@ repositories:
   eProsima/Micro-CDR:
     type: git
     url: https://github.com/eProsima/Micro-CDR.git
-    version: v2.0.1
+    version: v2.0.2
   eProsima/Micro-XRCE-DDS-Client:
     type: git
     url: https://github.com/eProsima/Micro-XRCE-DDS-Client.git
-    version: v2.4.3
+    version: v3.0.2
 
   ros2/libyaml_vendor:
     type: git
     url: https://github.com/ros2/libyaml_vendor.git
-    version: 1.6.4
+    version: 1.8.1
 
   ros2/rcl_logging:
     type: git
     url: https://github.com/ros2/rcl_logging.git
-    version: 3.1.1
+    version: 3.4.1
   ros2/rclc:
     type: git
-    url: https://github.com/ros2/rclc.git
-    version: 6.1.2
+    url: https://github.com/eProsima/rclc.git
+    version: 71bde68aefd5af481e8419ec3c8f4a78c9a95769
+    # TODO - switch from eProsima/rclc to ros2/rclc as soon as there is a lyrical branch there
+    # see https://github.com/micro-ROS/micro_ros_setup/blob/e64204663fb734e24b5de3cd04fb03d3188468d9/config/client_uros_packages.repos#L16-L20
 
   ros2/rmw:
     type: git
     url: https://github.com/ros2/rmw.git
-    version: 7.3.4
+    version: 7.10.2
   ros2/rmw_implementation:
     type: git
     url: https://github.com/ros2/rmw_implementation.git
-    version: 2.15.6
+    version: 3.1.6
   # needed because of https://github.com/ros2/rcl_interfaces/issues/144
   ros2/rosidl:
     type: git
     url: https://github.com/ros2/rosidl.git
-    version: 4.6.9
+    version: 5.2.1
   ros2/rosidl_core:
     type: git
     url: https://github.com/ros2/rosidl_core.git
-    version: 0.2.1
+    version: 0.4.3
   ros2/rosidl_dds:
     type: git
     url: https://github.com/ros2/rosidl_dds.git
-    version: 0.11.1
+    version: 0.13.0
   ros2/rosidl_defaults:
     type: git
     url: https://github.com/ros2/rosidl_defaults.git
-    version: 1.6.1
+    version: 1.8.1
   ros2/rosidl_dynamic_typesupport:
     type: git
     url: https://github.com/ros2/rosidl_dynamic_typesupport.git
-    version: 0.1.2
+    version: 0.4.1
+  ros2/ros2_tracing:
+    type: git
+    url: https://github.com/ros2/ros2_tracing.git
+    version: 8.10.2
 
+  # Everything under uros is just the latest version, not any specific pin/release
   uros/rcl:
     type: git
     url: https://github.com/micro-ROS/rcl.git
-    # exclude rcl_validate_enclave_name and rcl_get_security_options_from_environment from micro-ROS (#24) (#25)
-    version: 5fb4e39648ab214a76bc306411f7df93a0b6b3b2
+    version: 6ffc07d2bcd067648476fb024b94828d2ab60734
   uros/rcutils:
     type: git
     url: https://github.com/micro-ROS/rcutils.git
-    version: 0a9367e79f91da64a81b12dd4f8b69f8c0fc4baa
+    version: dcc1b6bf65473ad438b3b7cbc9b8cb8c0f132a37
   uros/micro_ros_utilities:
     type: git
     url: https://github.com/micro-ROS/micro_ros_utilities.git
-    version: 5.0.1
+    version: 383fc6d0054863a5fd79276e96f7bf9cf6cc1efe
   uros/rmw-microxrcedds:
     type: git
     url: https://github.com/micro-ROS/rmw-microxrcedds.git
-    # Branch name: 'jazzy'
-    version: e64d79f98423c4be77ac24bcb3f14be13144fe6e
+    version: c3257d462d8d71e92c716d4b00f7adc143cfeb8b
   uros/rosidl_typesupport:
     type: git
     url: https://github.com/micro-ROS/rosidl_typesupport.git
-    version: 352f208e29f33d7a5e78f4aec38ac0056d9ff23e
+    version: 924a1b9d2bd3ee5a6dc80b836761dbd3e47eb612
   uros/rosidl_typesupport_microxrcedds:
     type: git
     url: https://github.com/micro-ROS/rosidl_typesupport_microxrcedds.git
-    # 3 commits past 5.0.1
-    version: 9672e11175e616bc3fb7449288d0868ab36419bf
-
-
-
-  uros/tracetools:
-    type: git
-    url: https://github.com/ros2/ros2_tracing.git
-    version: 8d898b5ff0d79ef34eeae73a6ef3a20b30fe1ac8
-    # NOTE: this is not the same as the jazzy release. 
-    # This is a commit on rolling which is a few commits
-    # past where jazzy and rolling diverged. 
-    # This commit contains a necessary change
-    # The __attribute__((deprecated(msg))) form is 
-    # only supported in GCC version 4.5+, which is newer than 
-    # what we are using. The MotoPlus compiler does not like this line:
-    # https://github.com/ros2/ros2_tracing/blob/42e26cca398246db56881e17394abf9f8d3b7755/tracetools/include/tracetools/tracetools.h#L130
-    # We could make a new fork and cherry pick this commit instead
-    # but decided against it to avoid having to maintain a fork. 
+    version: 17cdb10ef114fb5959a3bc77681a1b69a9b904e2
 
   # messages/services/actions
   ros2/common_interfaces:
     type: git
     url: https://github.com/ros2/common_interfaces.git
-    version: 5.3.8
+    version: 5.9.3
   ros2/rcl_interfaces:
     type: git
     url: https://github.com/ros2/rcl_interfaces.git
-    version: 2.0.4
+    version: 2.4.5
   ros2/unique_identifier_msgs:
     type: git
     url: https://github.com/ros2/unique_identifier_msgs.git
-    version: 2.5.1
+    version: 2.8.1
 
   # only used to determine the ROS 2 codename during packaging
   ros2/ros_environment:
     type: git
     url: https://github.com/ros/ros_environment.git
-    version: 4.2.1
+    version: 4.5.1
 
   # extra dependencies needed for MotoROS2
   extra/industrial_msgs:
@@ -139,12 +126,18 @@ repositories:
   extra/ros-controls/control_msgs:
     type: git
     url: https://github.com/ros-controls/control_msgs.git
-    version: 5.10.0
+    version: 6.10.0
   extra/ros2/geometry2_tf2_msgs:
     type: git
     url: https://github.com/ros2/geometry2.git
-    version: 0.36.23
+    version: 0.45.10
   extra/motoros2_interfaces:
     type: git
     url: https://github.com/yaskawa-global/motoros2_interfaces.git
     version: 0.2.0
+  # libyaml_vendor no longer builds libyaml since 1.8.0 (ros2/libyaml_vendor#67),
+  # it expects a system libyaml. Same version libyaml_vendor used to vendor.
+  extra/libyaml:
+    type: git
+    url: https://github.com/yaml/libyaml.git
+    version: 0.2.5

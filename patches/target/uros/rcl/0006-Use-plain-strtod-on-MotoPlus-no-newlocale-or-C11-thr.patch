@@ -1,0 +1,45 @@
+From 39147100c95e96a3aca2719c64f0e823797919eb Mon Sep 17 00:00:00 2001
+From: jimmy-mcelwain <jimmy.mcelwain@motoman.com>
+Date: Wed, 14 Oct 2026 11:43:46 -0400
+Subject: [PATCH 6/7] Use plain strtod on MotoPlus (no newlocale or C11
+ threads)
+
+---
+ rcl_yaml_param_parser/src/parse.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/rcl_yaml_param_parser/src/parse.c b/rcl_yaml_param_parser/src/parse.c
+index f8dd8ff..b22bd14 100644
+--- a/rcl_yaml_param_parser/src/parse.c
++++ b/rcl_yaml_param_parser/src/parse.c
+@@ -23,6 +23,9 @@
+ 
+ #ifdef _WIN32
+ #include <windows.h>
++#elif defined(YASKAWA_MOTOMAN_MOTOPLUS1)
++// MotoPlus has no newlocale/uselocale or C11 threads, and nothing changes
++// the locale from the default "C", so plain strtod is locale-independent
+ #elif defined(__APPLE__)
+ #include <pthread.h>
+ typedef pthread_once_t once_flag;
+@@ -810,7 +813,7 @@ BOOL CALLBACK init_c_locale(
+   c_locale = _create_locale(LC_NUMERIC, "C");
+   return TRUE;
+ }
+-#else
++#elif !defined(YASKAWA_MOTOMAN_MOTOPLUS1)
+ static locale_t c_locale = 0;
+ static once_flag c_locale_once_flag = ONCE_FLAG_INIT;
+ 
+@@ -841,6 +844,8 @@ static double strtod_locale_independent(const char *restrict nptr, char **restri
+   }
+ 
+   return _strtod_l(nptr, endptr, c_locale);
++#elif defined(YASKAWA_MOTOMAN_MOTOPLUS1)
++  return strtod(nptr, endptr);
+ #else
+   call_once(&c_locale_once_flag, init_c_locale);
+ 
+-- 
+2.44.0.windows.1
+

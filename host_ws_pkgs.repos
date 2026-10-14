@@ -15,30 +15,28 @@ repositories:
   ros2/ament_cmake_ros:
     type: git
     url: https://github.com/ros2/ament_cmake_ros.git
-    version: 0.12.2
+    version: 0.15.8
   ament/ament_cmake:
     type: git
     url: https://github.com/ament/ament_cmake
-    # branch: 'jazzy'
-    # https://github.com/ament/ament_cmake/compare/2.5.2...2.5.6
-    version: 2.5.6
+    version: 2.8.8
   ament/ament_index:
     type: git
     url: https://github.com/ament/ament_index.git
-    version: 1.8.4
+    version: 1.13.3
   ament/ament_lint:
     type: git
     url: https://github.com/ament/ament_lint.git
-    version: 0.17.5
+    version: 0.20.6
   ament/ament_package:
     type: git
     url: https://github.com/ament/ament_package.git
-    version: 0.16.5
+    version: 0.18.3
   ament/googletest:
     type: git
     url: https://github.com/ament/googletest.git
-    version: 1.14.9000
+    version: 1.16.1
   ament/uncrustify_vendor:
     type: git
     url: https://github.com/ament/uncrustify_vendor.git
-    version: 3.0.1
+    version: 3.2.0

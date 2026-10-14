@@ -1,0 +1,46 @@
+From 58d92c3253deb6b084f4d6716ca94c30bbaf9ccf Mon Sep 17 00:00:00 2001
+From: jimmy-mcelwain <jimmy.mcelwain@motoman.com>
+Date: Mon, 12 Oct 2026 18:02:43 -0400
+Subject: [PATCH] TEMPORARY stub out rosidl_buffer C helpers on MotoPlus (no
+ C++ stdlib)
+
+Wait for https://github.com/ros2/rosidl/issues/1002 to be addressed
+---
+ rosidl_buffer/src/c_helpers.cpp | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
+
+diff --git a/rosidl_buffer/src/c_helpers.cpp b/rosidl_buffer/src/c_helpers.cpp
+index f25df5a..6f9a91d 100644
+--- a/rosidl_buffer/src/c_helpers.cpp
++++ b/rosidl_buffer/src/c_helpers.cpp
+@@ -14,6 +14,22 @@
+ 
+ #include "rosidl_buffer/c_helpers.h"
+ 
++#ifdef YASKAWA_MOTOMAN_MOTOPLUS1
++extern "C" {
++
++void rosidl_buffer_uint8_throw_if_not_cpu(const void * buffer_ptr)
++{
++  (void)buffer_ptr;
++}
++
++void rosidl_buffer_uint8_destroy(void * buffer_ptr)
++{
++  (void)buffer_ptr;
++}
++
++}  // extern "C"
++#else  // YASKAWA_MOTOMAN_MOTOPLUS1
++
+ #include <cstdint>
+ 
+ #include "rosidl_buffer/buffer.hpp"
+@@ -34,3 +50,4 @@ void rosidl_buffer_uint8_destroy(void * buffer_ptr)
+ }
+ 
+ }  // extern "C"
++#endif  // YASKAWA_MOTOMAN_MOTOPLUS1
+-- 
+2.44.0.windows.1
+

@@ -5,7 +5,10 @@
 
 ament/ament_cmake/ament_cmake_auto
 ament/ament_cmake/ament_cmake_google_benchmark
+ament/ament_cmake/ament_cmake_python_test
 ament/ament_lint
 ament/googletest
 ament/uncrustify_vendor
 ros2/ament_cmake_ros/domain_coordinator
+ros2/ament_cmake_ros/rmw_test_fixture
+ros2/ament_cmake_ros/rmw_test_fixture_implementation

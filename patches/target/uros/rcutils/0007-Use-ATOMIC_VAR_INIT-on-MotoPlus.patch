@@ -1,0 +1,29 @@
+From bee26c7f915f2429df1718e80951fc8353cc89a9 Mon Sep 17 00:00:00 2001
+From: jimmy-mcelwain <jimmy.mcelwain@motoman.com>
+Date: Wed, 14 Oct 2026 11:10:10 -0400
+Subject: [PATCH 7/7] Use ATOMIC_VAR_INIT on MotoPlus
+
+---
+ src/testing/fault_injection.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/testing/fault_injection.c b/src/testing/fault_injection.c
+index 666d964..7426249 100644
+--- a/src/testing/fault_injection.c
++++ b/src/testing/fault_injection.c
+@@ -20,7 +20,11 @@
+ // rcutils/stdatomic_helper.h: on MSVC atomics are emulated with a struct
+ // (requiring a braced initializer), everywhere else they are real C11
+ // atomics (requiring a plain scalar initializer).
+-#if defined(_WIN32) && !defined(__MINGW64__)
++// MotoPlus uses rcutils' former bundled stdatomic.h (via motoplus_posix_shim),
++// where atomics are structs: let the header pick the matching initializer.
++#if defined(YASKAWA_MOTOMAN_MOTOPLUS1)
++static atomic_int_least64_t g_rcutils_fault_injection_count = ATOMIC_VAR_INIT(-1);
++#elif defined(_WIN32) && !defined(__MINGW64__)
+ static atomic_int_least64_t g_rcutils_fault_injection_count = {-1};
+ #else
+ static atomic_int_least64_t g_rcutils_fault_injection_count = -1;
+-- 
+2.44.0.windows.1
+
